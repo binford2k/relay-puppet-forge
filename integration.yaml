@@ -1,15 +1,17 @@
 apiVersion: integration/v1
 kind: Integration
-name: template
+name: puppet-forge
 channel: stable
 version: v20200514
 summary: Integration template
 license: Apache-2.0
-homepage: https://github.com/relay-integrations/template
-source: https://github.com/relay-integrations/template
+homepage: https://github.com/relay-integrations/relay-puppet-forge
+source: https://github.com/relay-integrations/relay-puppet-forge
 
 description: |
-  This is a template for creating a Relay Integration repository.
+  The Puppet Forge is a marketplace for Puppet modules. Nearly all are
+  open source and freely available. This integration makes the Forge API
+  available for Relay workflows.
 
 owner:
   name: Puppet, Inc.
@@ -17,5 +19,6 @@ owner:
   url: https://puppet.com
 
 tags:
-- template
+- puppet
+- puppet forge
 - relay integration

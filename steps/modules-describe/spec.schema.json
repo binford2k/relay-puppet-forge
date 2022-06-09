@@ -1,0 +1,69 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"slug": {
+			"type": "string",
+			"description": "The slug (username-modulename) of the module to retrieve."
+		},
+		"query": {
+			"type": "string",
+			"description": "The search query to use, just as you would on the Forge search page."
+		},
+		"owner": {
+			"type": "string",
+			"description": "A string representing a module owner. Only modules from this user will be returned."
+		},
+		"endorsements": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "A list of endorsements to filter on (supported|approved|partner)."
+		},
+		"has_tasks": {
+			"type": "boolean",
+			"description": "Only return modules containing tasks."
+		},
+		"with_pdk": {
+			"type": "boolean",
+			"description": "Only return modules built with the PDK."
+		},
+		"premium": {
+			"type": "boolean",
+			"description": "Only return modules that are part of the Premium tier."
+		},
+		"os": {
+			"type": "string",
+			"description": "Only return modules supporting this operating system."
+		},
+		"os_release": {
+			"type": "string",
+			"description": "Only return modules supporting this OS release version. Must be paired with `os`."
+		},
+		"puppet": {
+			"type": "string",
+			"description": "Only return modules supporting this version of Puppet."
+		},
+		"with_minimum_score": {
+			"type": "integer",
+			"description": "Only return modules with at least this score. The score is normalized to a percentage, so valid values are 0-100."
+		},
+		"release_within": {
+			"type": "string",
+			"description": "Only return modules released within the specified time period."
+		},
+		"fields": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "Additional fields to return in the list of modules."
+		}
+	},
+	"required": [
+		"repos",
+		"topics"
+	],
+	"additionalProperties": false
+}

@@ -1,0 +1,49 @@
+# Step metadata example - full description at:
+# https://github.com/puppetlabs/relay-rfcs/blob/master/content/0006-integration-layout/rfc.md#common-metadata
+apiVersion: integration/v1
+kind: Step
+name: modules-describe
+version: 1
+summary: Get module information from the Puppet Forge
+
+description: |
+  This uses the Puppet Forge API to get information about one or many modules.
+
+build:
+  apiVersion: build/v1
+  kind: Docker
+
+publish:
+  repository: relaysh/relay-puppet-forge
+
+schemas:
+spec:
+  source: file
+  file: spec.schema.json
+
+# optional list of examples; each one can be a Step or a complete Workflow
+examples:
+- summary: Retrieve a module from the Puppet Forge
+  content:
+    apiVersion: v1
+    kind: Workflow
+    parameters:
+      slug:
+        description: The name of the module to retrieve
+        default: puppetlabs-stdlib
+    steps:
+      image: relaysh/puppet-forge-modules-describe
+      spec:
+        slug: !Parameter slug
+- summary: Get a list of Supported modules from the Puppet Forge, including their download count and tags
+  content:
+    apiVersion: v1
+    kind: Workflow
+    steps:
+      image: relaysh/puppet-forge-modules-describe
+      spec:
+        endorsements:
+          - supported
+        fields:
+          - download_count
+          - tags
